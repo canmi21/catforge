@@ -1,0 +1,51 @@
+{
+  "lockfileVersion": 1,
+  "configVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "catforge",
+      "devDependencies": {
+        "typescript": "^5.9.3",
+      },
+    },
+    "src/adapter/rust": {
+      "name": "@catforge/adapter-rust",
+      "version": "0.0.1",
+    },
+    "src/adapter/typescript": {
+      "name": "@catforge/adapter-typescript",
+      "version": "0.0.1",
+    },
+    "src/cli": {
+      "name": "@catforge/cli",
+      "version": "0.0.1",
+    },
+    "src/docs": {
+      "name": "@catforge/docs",
+      "version": "0.0.1",
+    },
+    "src/schema": {
+      "name": "@catforge/schema",
+      "version": "0.0.1",
+    },
+    "src/ui/fuma": {
+      "name": "@catforge/ui-fuma",
+      "version": "0.0.1",
+    },
+  },
+  "packages": {
+    "@catforge/adapter-rust": ["@catforge/adapter-rust@workspace:src/adapter/rust"],
+
+    "@catforge/adapter-typescript": ["@catforge/adapter-typescript@workspace:src/adapter/typescript"],
+
+    "@catforge/cli": ["@catforge/cli@workspace:src/cli"],
+
+    "@catforge/docs": ["@catforge/docs@workspace:src/docs"],
+
+    "@catforge/schema": ["@catforge/schema@workspace:src/schema"],
+
+    "@catforge/ui-fuma": ["@catforge/ui-fuma@workspace:src/ui/fuma"],
+
+    "typescript": ["typescript@5.9.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw=="],
+  }
+}

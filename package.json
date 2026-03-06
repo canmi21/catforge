@@ -1,0 +1,8 @@
+{
+  "name": "catforge",
+  "private": true,
+  "workspaces": ["src/schema", "src/cli", "src/docs", "src/adapter/*", "src/ui/*"],
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
