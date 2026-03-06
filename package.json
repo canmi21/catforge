@@ -2,7 +2,11 @@
   "name": "catforge",
   "private": true,
   "workspaces": ["src/schema", "src/cli", "src/docs", "src/adapter/*", "src/ui/*"],
+  "scripts": {
+    "test": "vitest run"
+  },
   "devDependencies": {
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^3.0.0"
   }
 }

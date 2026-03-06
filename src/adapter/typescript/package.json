@@ -2,5 +2,21 @@
   "name": "@catforge/adapter-typescript",
   "version": "0.0.1",
   "type": "module",
-  "scripts": {}
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@catforge/schema": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typedoc": "^0.28.0"
+  }
 }
