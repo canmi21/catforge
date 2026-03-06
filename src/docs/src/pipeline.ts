@@ -4,15 +4,17 @@ import type { CatforgeConfig, PackageEntry } from "./config.js";
 import { resolveConfig } from "./config.js";
 import { scanMarkdown } from "./markdown.js";
 
+export type AdapterLoader = (
+  entry: PackageEntry,
+  rootDir: string,
+) => Promise<DocOutput<BaseSymbol>>;
+
 // Adapter name -> workspace source path (relative to rootDir)
 const adapterSourcePaths: Record<string, string> = {
   typescript: "src/adapter/typescript/src/index.js",
 };
 
-async function loadAdapter(
-  entry: PackageEntry,
-  rootDir: string,
-): Promise<DocOutput<BaseSymbol>> {
+const defaultLoadAdapter: AdapterLoader = async (entry, rootDir) => {
   const sourcePath = adapterSourcePaths[entry.adapter];
   const specifier = sourcePath ? join(rootDir, sourcePath) : entry.adapter;
   const mod = await import(specifier);
@@ -27,13 +29,14 @@ async function loadAdapter(
   }
 
   throw new Error(`Adapter "${entry.adapter}" has no recognized entry point`);
-}
+};
 
 export async function buildSite(
   config: CatforgeConfig,
-  options?: { rootDir?: string },
+  options?: { rootDir?: string; loadAdapter?: AdapterLoader },
 ): Promise<Site> {
   const rootDir = options?.rootDir ?? process.cwd();
+  const loadAdapter = options?.loadAdapter ?? defaultLoadAdapter;
   const resolved = await resolveConfig(config, rootDir);
 
   // Build API sections from adapter outputs
