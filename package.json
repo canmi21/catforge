@@ -1,5 +1,6 @@
 {
   "name": "catforge",
+  "version": "0.0.1",
   "private": true,
   "workspaces": ["src/schema", "src/cli", "src/docs", "src/adapter/*", "src/ui/*"],
   "scripts": {

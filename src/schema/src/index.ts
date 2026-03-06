@@ -19,6 +19,12 @@ export type {
 } from "./output.js";
 
 export type {
+  ApiSection,
+  PageNode,
+  Site,
+} from "./site.js";
+
+export type {
   TsClass,
   TsEnum,
   TsEnumMember,

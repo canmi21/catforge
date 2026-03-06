@@ -31,6 +31,13 @@
     "src/docs": {
       "name": "@catforge/docs",
       "version": "0.0.1",
+      "dependencies": {
+        "@catforge/schema": "workspace:*",
+        "yaml": "^2.7.0",
+      },
+      "devDependencies": {
+        "@types/node": "^22.0.0",
+      },
     },
     "src/schema": {
       "name": "@catforge/schema",
