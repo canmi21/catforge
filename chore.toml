@@ -1,0 +1,13 @@
+[path_comment]
+enabled = true
+
+[path_comment.formats]
+".html" = "<!-- $path$file -->"
+".js" = "/* $path$file */"
+".mjs" = "/* $path$file */"
+".ts" = "/* $path$file */"
+".tsx" = "/* $path$file */"
+
+[path_comment.exclude]
+dirs = ["node_modules"]
+patterns = []
