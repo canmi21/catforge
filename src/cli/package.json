@@ -2,5 +2,21 @@
   "name": "@catforge/cli",
   "version": "0.0.1",
   "type": "module",
-  "scripts": {}
+  "bin": {
+    "catforge": "./dist/index.js"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsdown"
+  },
+  "dependencies": {
+    "@catforge/docs": "workspace:*",
+    "@catforge/schema": "workspace:*",
+    "@catforge/adapter-typescript": "workspace:*",
+    "jiti": "^2.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsdown": "^0.12.0"
+  }
 }
