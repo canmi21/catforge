@@ -1,0 +1,121 @@
+.api-meta {
+	color: var(--color-text-muted);
+	font-size: 14px;
+	margin-bottom: 16px;
+}
+
+.api-package-card {
+	padding: 16px 0;
+	border-bottom: 1px solid var(--color-border);
+}
+
+.api-package-card h2 {
+	font-size: 1.25rem;
+	margin-bottom: 4px;
+}
+
+.api-module-table {
+	width: 100%;
+	margin-top: 12px;
+}
+
+/* Symbol card */
+.api-symbol-card {
+	padding: 16px 0;
+	border-bottom: 1px solid var(--color-border);
+}
+
+.api-symbol-header {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 8px;
+}
+
+.api-symbol-name {
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: var(--color-text);
+}
+
+.api-symbol-name:hover {
+	color: var(--color-link);
+}
+
+/* Kind badge */
+.api-kind-badge {
+	display: inline-block;
+	font-size: 11px;
+	font-weight: 600;
+	padding: 1px 6px;
+	border-radius: 3px;
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
+	background: var(--color-code-bg);
+	color: var(--color-text-muted);
+}
+
+.api-kind-badge.kind-interface { background: #dbeafe; color: #1d4ed8; }
+.api-kind-badge.kind-class { background: #fef3c7; color: #92400e; }
+.api-kind-badge.kind-type { background: #e0e7ff; color: #4338ca; }
+.api-kind-badge.kind-function { background: #d1fae5; color: #065f46; }
+.api-kind-badge.kind-enum { background: #fce7f3; color: #9d174d; }
+
+/* Signature block */
+.api-signature {
+	background: var(--color-code-bg);
+	padding: 10px 14px;
+	border-radius: 6px;
+	overflow-x: auto;
+	font-size: 13px;
+	line-height: 1.5;
+	margin-bottom: 8px;
+}
+
+.api-signature code {
+	font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+.api-symbol-doc {
+	margin-bottom: 8px;
+}
+
+/* Params table */
+.api-params { margin-top: 8px; }
+.api-params h4 { font-size: 13px; margin-bottom: 4px; }
+
+.api-params-table {
+	font-size: 13px;
+	width: 100%;
+}
+
+.api-params-table code {
+	background: var(--color-code-bg);
+	padding: 1px 4px;
+	border-radius: 2px;
+	font-size: 12px;
+}
+
+/* Members list */
+.api-members { margin-top: 8px; }
+.api-members h4 { font-size: 13px; margin-bottom: 4px; }
+.api-members ul { list-style: disc; padding-left: 1.5em; font-size: 13px; }
+
+/* Source location */
+.api-location {
+	font-size: 12px;
+	color: var(--color-text-muted);
+	margin-top: 8px;
+}
+
+/* Kind group */
+.api-kind-group {
+	margin-top: 24px;
+}
+
+.api-kind-group h2 {
+	font-size: 1.25rem;
+	margin-bottom: 8px;
+	padding-bottom: 4px;
+	border-bottom: 1px solid var(--color-border);
+}

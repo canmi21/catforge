@@ -10,11 +10,19 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiIndexRouteImport } from './routes/api.index'
 import { Route as DocsSplatRouteImport } from './routes/docs.$'
+import { Route as ApiPkgIndexRouteImport } from './routes/api.$pkg.index'
+import { Route as ApiPkgModRouteImport } from './routes/api.$pkg.$mod'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiIndexRoute = ApiIndexRouteImport.update({
+  id: '/api/',
+  path: '/api/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DocsSplatRoute = DocsSplatRouteImport.update({
@@ -22,31 +30,53 @@ const DocsSplatRoute = DocsSplatRouteImport.update({
   path: '/docs/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPkgIndexRoute = ApiPkgIndexRouteImport.update({
+  id: '/api/$pkg/',
+  path: '/api/$pkg/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPkgModRoute = ApiPkgModRouteImport.update({
+  id: '/api/$pkg/$mod',
+  path: '/api/$pkg/$mod',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/docs/$': typeof DocsSplatRoute
+  '/api/': typeof ApiIndexRoute
+  '/api/$pkg/$mod': typeof ApiPkgModRoute
+  '/api/$pkg/': typeof ApiPkgIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/docs/$': typeof DocsSplatRoute
+  '/api': typeof ApiIndexRoute
+  '/api/$pkg/$mod': typeof ApiPkgModRoute
+  '/api/$pkg': typeof ApiPkgIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/docs/$': typeof DocsSplatRoute
+  '/api/': typeof ApiIndexRoute
+  '/api/$pkg/$mod': typeof ApiPkgModRoute
+  '/api/$pkg/': typeof ApiPkgIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/docs/$'
+  fullPaths: '/' | '/docs/$' | '/api/' | '/api/$pkg/$mod' | '/api/$pkg/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/docs/$'
-  id: '__root__' | '/' | '/docs/$'
+  to: '/' | '/docs/$' | '/api' | '/api/$pkg/$mod' | '/api/$pkg'
+  id: '__root__' | '/' | '/docs/$' | '/api/' | '/api/$pkg/$mod' | '/api/$pkg/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DocsSplatRoute: typeof DocsSplatRoute
+  ApiIndexRoute: typeof ApiIndexRoute
+  ApiPkgModRoute: typeof ApiPkgModRoute
+  ApiPkgIndexRoute: typeof ApiPkgIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,11 +88,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/': {
+      id: '/api/'
+      path: '/api'
+      fullPath: '/api/'
+      preLoaderRoute: typeof ApiIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/docs/$': {
       id: '/docs/$'
       path: '/docs/$'
       fullPath: '/docs/$'
       preLoaderRoute: typeof DocsSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/$pkg/': {
+      id: '/api/$pkg/'
+      path: '/api/$pkg'
+      fullPath: '/api/$pkg/'
+      preLoaderRoute: typeof ApiPkgIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/$pkg/$mod': {
+      id: '/api/$pkg/$mod'
+      path: '/api/$pkg/$mod'
+      fullPath: '/api/$pkg/$mod'
+      preLoaderRoute: typeof ApiPkgModRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -71,6 +122,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DocsSplatRoute: DocsSplatRoute,
+  ApiIndexRoute: ApiIndexRoute,
+  ApiPkgModRoute: ApiPkgModRoute,
+  ApiPkgIndexRoute: ApiPkgIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
