@@ -33,7 +33,6 @@
       "dependencies": {
         "@catforge/adapter-typescript": "workspace:*",
         "@catforge/docs": "workspace:*",
-        "@catforge/schema": "workspace:*",
         "jiti": "^2.4.0",
       },
       "devDependencies": {

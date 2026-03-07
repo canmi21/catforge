@@ -52,7 +52,7 @@
 
 ## Running Tests
 
-| Command        | Scope                          |
-| -------------- | ------------------------------ |
-| `just test`    | All tests (vitest)             |
-| `just verify`  | Full pipeline: fmt + lint + test |
+| Command       | Scope                            |
+| ------------- | -------------------------------- |
+| `just test`   | All tests (vitest)               |
+| `just verify` | Full pipeline: fmt + lint + test |
