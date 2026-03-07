@@ -3,8 +3,11 @@ import siteData from '~/lib/site-data.js'
 import { findHomePage } from '~/lib/route-utils.js'
 import { MarkdownContent } from '~/components/markdown-content.js'
 
+const home = findHomePage(siteData.pages)
+
 export const Route = createFileRoute('/')({
 	component: HomePage,
+	staticData: { toc: home?.toc ?? [] },
 })
 
 function HomePage() {
