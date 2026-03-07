@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router'
 import siteData from '~/lib/site-data.js'
 import { SidebarItem } from './sidebar-item.js'
 import type { ProcessedPage } from '~/lib/site-data.js'
@@ -43,7 +44,7 @@ function ApiSidebarSection({ section }: { section: ApiSection }) {
 				<ul className="sidebar-list nested">
 					{section.modules.map((mod) => (
 						<li key={mod.path} className="sidebar-leaf">
-							<a href={`/api/${pkgEncoded}/${mod.path}`}>{mod.name}</a>
+							<Link to={`/api/${pkgEncoded}/${mod.path}`}>{mod.name}</Link>
 						</li>
 					))}
 				</ul>
