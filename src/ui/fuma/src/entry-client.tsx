@@ -10,8 +10,11 @@ import './styles/api.css'
 
 const router = createRouter()
 
+const root = document.getElementById('root')
+if (!root) throw new Error('Missing #root element')
+
 hydrateRoot(
-	document.getElementById('root')!,
+	root,
 	<StrictMode>
 		<RouterProvider router={router} />
 	</StrictMode>,

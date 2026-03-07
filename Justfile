@@ -14,9 +14,8 @@ default:
 # Format + lint (pre-commit gate)
 pre-commit: fmt lint
 
-# Run all formatters
-fmt: fmt-ts fmt-md
-    chore .
+# Run all formatters (chore first to normalize files, then oxfmt/dprint for final format)
+fmt: fmt-path fmt-ts fmt-md
 
 # Format TS (oxfmt)
 fmt-ts:

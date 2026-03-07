@@ -13,22 +13,31 @@ interface SiteDataPluginOptions {
 	siteJsonPath?: string
 }
 
+// Minimal rehype AST node shape (unist/hast)
+interface HastNode {
+	type: string
+	tagName?: string
+	value?: string
+	properties?: Record<string, unknown>
+	children?: HastNode[]
+}
+
 // Collect heading elements from the rehype AST for TOC generation
 function rehypeExtractToc(tocEntries: TocEntry[]) {
-	return () => (tree: any) => {
-		visit(tree, (node: any) => {
-			if (node.type === 'element' && /^h[2-4]$/.test(node.tagName)) {
+	return () => (tree: HastNode) => {
+		visit(tree, (node) => {
+			if (node.type === 'element' && node.tagName && /^h[2-4]$/.test(node.tagName)) {
 				const depth = parseInt(node.tagName[1])
 				const id = node.properties?.id
 				if (!id) return
 				const text = extractText(node)
-				tocEntries.push({ depth, id, text })
+				tocEntries.push({ depth, id: String(id), text })
 			}
 		})
 	}
 }
 
-function visit(node: any, fn: (node: any) => void) {
+function visit(node: HastNode, fn: (node: HastNode) => void) {
 	fn(node)
 	if (node.children) {
 		for (const child of node.children) {
@@ -37,8 +46,8 @@ function visit(node: any, fn: (node: any) => void) {
 	}
 }
 
-function extractText(node: any): string {
-	if (node.type === 'text') return node.value
+function extractText(node: HastNode): string {
+	if (node.type === 'text') return node.value ?? ''
 	if (!node.children) return ''
 	return node.children.map(extractText).join('')
 }

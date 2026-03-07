@@ -1,6 +1,6 @@
 /* src/ui/fuma/src/components/api-symbol.tsx */
 
-import type { BaseSymbol } from '@catforge/schema'
+import type { BaseSymbol, TsParam, TsEnumMember } from '@catforge/schema'
 import '~/styles/api.css'
 
 interface ApiSymbolProps {
@@ -9,10 +9,10 @@ interface ApiSymbolProps {
 
 export function ApiSymbol({ symbol }: ApiSymbolProps) {
 	// Narrow to TS-specific fields if present
-	const params = (symbol as any).params as
-		| { name: string; type: string; optional: boolean; default?: string }[]
-		| undefined
-	const members = (symbol as any).members as { name: string; value?: string }[] | undefined
+	const params: TsParam[] | undefined =
+		'params' in symbol ? (symbol.params as TsParam[]) : undefined
+	const members: TsEnumMember[] | undefined =
+		'members' in symbol ? (symbol.members as TsEnumMember[]) : undefined
 
 	return (
 		<div className="api-symbol-card" id={symbol.name}>
@@ -66,7 +66,7 @@ export function ApiSymbol({ symbol }: ApiSymbolProps) {
 						{members.map((m) => (
 							<li key={m.name}>
 								<code>{m.name}</code>
-								{m.value != null && <span> = {m.value}</span>}
+								{m.value !== undefined && <span> = {m.value}</span>}
 							</li>
 						))}
 					</ul>

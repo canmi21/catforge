@@ -27,8 +27,9 @@ export function ApiModule({ symbols }: ApiModuleProps) {
 	}
 
 	// Display groups in a stable order
+	const kindOrder = KIND_ORDER as readonly string[]
 	const orderedKinds = [...grouped.keys()].sort(
-		(a, b) => (KIND_ORDER.indexOf(a as any) ?? 99) - (KIND_ORDER.indexOf(b as any) ?? 99),
+		(a, b) => (kindOrder.indexOf(a) ?? 99) - (kindOrder.indexOf(b) ?? 99),
 	)
 
 	return (
@@ -36,7 +37,7 @@ export function ApiModule({ symbols }: ApiModuleProps) {
 			{orderedKinds.map((kind) => (
 				<section key={kind} className="api-kind-group">
 					<h2>{KIND_LABELS[kind] ?? kind}</h2>
-					{grouped.get(kind)!.map((sym) => (
+					{grouped.get(kind)?.map((sym) => (
 						<ApiSymbol key={sym.name} symbol={sym} />
 					))}
 				</section>
