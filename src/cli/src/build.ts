@@ -1,4 +1,5 @@
 import { execFileSync } from 'node:child_process'
+import { rmSync } from 'node:fs'
 import { mkdir, writeFile } from 'node:fs/promises'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -58,12 +59,34 @@ export async function runBuild(rootDir: string): Promise<void> {
 	const __dirname = dirname(fileURLToPath(import.meta.url))
 	const uiDir = resolve(__dirname, '../../ui/fuma')
 	const htmlOutDir = resolve(outDir, 'dist')
+	const buildEnv = { ...process.env, CATFORGE_SITE_JSON: outPath }
 
+	// 1. Client build
 	console.log(`\nBuilding static site...`)
 	execFileSync('bunx', ['vite', 'build', '--outDir', htmlOutDir, '--emptyOutDir'], {
 		cwd: uiDir,
-		env: { ...process.env, CATFORGE_SITE_JSON: outPath },
+		env: buildEnv,
 		stdio: 'inherit',
 	})
+
+	// 2. SSR build
+	const serverOutDir = resolve(htmlOutDir, 'server')
+	console.log(`\nBuilding SSR bundle...`)
+	execFileSync('bunx', ['vite', 'build', '--ssr', 'src/prerender.ts', '--outDir', serverOutDir], {
+		cwd: uiDir,
+		env: buildEnv,
+		stdio: 'inherit',
+	})
+
+	// 3. Prerender all routes
+	execFileSync('bun', ['run', resolve(serverOutDir, 'prerender.js')], {
+		cwd: uiDir,
+		env: { ...process.env, CATFORGE_OUT_DIR: htmlOutDir },
+		stdio: 'inherit',
+	})
+
+	// 4. Clean up SSR artifacts
+	rmSync(serverOutDir, { recursive: true })
+
 	console.log(`\nStatic site: ${htmlOutDir}`)
 }

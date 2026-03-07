@@ -21,4 +21,8 @@ export default defineConfig({
 	build: {
 		outDir: 'dist',
 	},
+	ssr: {
+		// Bundle all deps so SSR output is self-contained
+		noExternal: true,
+	},
 })

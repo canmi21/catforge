@@ -1,5 +1,5 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { hydrateRoot } from 'react-dom/client'
 import { RouterProvider } from '@tanstack/react-router'
 import { createRouter } from './router.js'
 import './styles/global.css'
@@ -8,7 +8,8 @@ import './styles/api.css'
 
 const router = createRouter()
 
-createRoot(document.getElementById('root')!).render(
+hydrateRoot(
+	document.getElementById('root')!,
 	<StrictMode>
 		<RouterProvider router={router} />
 	</StrictMode>,
