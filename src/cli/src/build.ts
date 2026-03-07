@@ -1,5 +1,7 @@
+import { execFileSync } from 'node:child_process'
 import { mkdir, writeFile } from 'node:fs/promises'
-import { resolve } from 'node:path'
+import { resolve, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { createJiti } from 'jiti'
 import { buildSite } from '@catforge/docs'
 import type { AdapterLoader, CatforgeConfig } from '@catforge/docs'
@@ -51,4 +53,17 @@ export async function runBuild(rootDir: string): Promise<void> {
 	console.log(`  API symbols: ${symbolCount}`)
 	console.log(`  Output:      ${outPath}\n`)
 	console.log(`Done in ${elapsed}ms`)
+
+	// Build static HTML site
+	const __dirname = dirname(fileURLToPath(import.meta.url))
+	const uiDir = resolve(__dirname, '../../ui/fuma')
+	const htmlOutDir = resolve(outDir, 'dist')
+
+	console.log(`\nBuilding static site...`)
+	execFileSync('bunx', ['vite', 'build', '--outDir', htmlOutDir, '--emptyOutDir'], {
+		cwd: uiDir,
+		env: { ...process.env, CATFORGE_SITE_JSON: outPath },
+		stdio: 'inherit',
+	})
+	console.log(`\nStatic site: ${htmlOutDir}`)
 }
