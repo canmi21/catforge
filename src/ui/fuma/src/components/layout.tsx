@@ -2,14 +2,10 @@ import type { ReactNode } from 'react'
 import siteData from '~/lib/site-data.js'
 import { Sidebar } from './sidebar.js'
 import { TocPanel } from './toc-panel.js'
-import type { TocEntry } from '~/lib/site-data.js'
+import { useTocEntries } from '~/lib/toc-context.js'
 
-interface LayoutProps {
-	children: ReactNode
-	toc?: TocEntry[]
-}
-
-export function Layout({ children, toc }: LayoutProps) {
+export function Layout({ children }: { children: ReactNode }) {
+	const toc = useTocEntries()
 	return (
 		<div className="site-layout">
 			<header className="site-header">
@@ -20,7 +16,7 @@ export function Layout({ children, toc }: LayoutProps) {
 			</header>
 			<Sidebar />
 			<main className="site-content">{children}</main>
-			<TocPanel entries={toc ?? []} />
+			<TocPanel entries={toc} />
 		</div>
 	)
 }

@@ -1,0 +1,26 @@
+/* Shiki dual-theme code blocks */
+pre.shiki {
+	padding: 16px;
+	border-radius: 6px;
+	overflow-x: auto;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+/* Light theme is default */
+pre.shiki .shiki-dark {
+	display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+	pre.shiki .shiki-light {
+		display: none;
+	}
+	pre.shiki .shiki-dark {
+		display: initial;
+	}
+}
+
+pre code {
+	font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}

@@ -2,16 +2,15 @@ import { createFileRoute } from '@tanstack/react-router'
 import siteData from '~/lib/site-data.js'
 import { findHomePage } from '~/lib/route-utils.js'
 import { MarkdownContent } from '~/components/markdown-content.js'
-
-const home = findHomePage(siteData.pages)
+import { useSetToc } from '~/lib/toc-context.js'
 
 export const Route = createFileRoute('/')({
 	component: HomePage,
-	staticData: { toc: home?.toc ?? [] },
 })
 
 function HomePage() {
 	const home = findHomePage(siteData.pages)
+	useSetToc(home?.toc ?? [])
 	if (!home) return <p>No pages found.</p>
 	return (
 		<div>
