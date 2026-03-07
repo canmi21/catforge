@@ -1,3 +1,5 @@
+/* src/ui/fuma/src/entry-server.tsx */
+
 import { renderToString } from 'react-dom/server'
 import { createMemoryHistory, RouterProvider } from '@tanstack/react-router'
 import { StrictMode } from 'react'

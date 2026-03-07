@@ -1,3 +1,5 @@
+/* src/ui/fuma/src/plugins/vite-plugin-site-data.ts */
+
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import type { Plugin } from 'vite'
@@ -15,10 +17,7 @@ interface SiteDataPluginOptions {
 function rehypeExtractToc(tocEntries: TocEntry[]) {
 	return () => (tree: any) => {
 		visit(tree, (node: any) => {
-			if (
-				node.type === 'element' &&
-				/^h[2-4]$/.test(node.tagName)
-			) {
+			if (node.type === 'element' && /^h[2-4]$/.test(node.tagName)) {
 				const depth = parseInt(node.tagName[1])
 				const id = node.properties?.id
 				if (!id) return
@@ -85,9 +84,7 @@ async function processPage(
 		toc = result.toc
 	}
 
-	const children = await Promise.all(
-		page.children.map((child) => processPage(child, process)),
-	)
+	const children = await Promise.all(page.children.map((child) => processPage(child, process)))
 
 	return {
 		title: page.title,
@@ -135,9 +132,7 @@ export function siteDataPlugin(options: SiteDataPluginOptions = {}): Plugin {
 			const site: Site = JSON.parse(raw)
 			const process = await createProcessor()
 
-			const pages = await Promise.all(
-				site.pages.map((page) => processPage(page, process)),
-			)
+			const pages = await Promise.all(site.pages.map((page) => processPage(page, process)))
 			const pageMap = buildPageMap(pages)
 
 			const processed: ProcessedSite = {

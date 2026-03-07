@@ -1,3 +1,5 @@
+/* src/ui/fuma/src/components/api-module.tsx */
+
 import type { BaseSymbol } from '@catforge/schema'
 import { ApiSymbol } from './api-symbol.js'
 
@@ -26,9 +28,7 @@ export function ApiModule({ symbols }: ApiModuleProps) {
 
 	// Display groups in a stable order
 	const orderedKinds = [...grouped.keys()].sort(
-		(a, b) =>
-			(KIND_ORDER.indexOf(a as any) ?? 99) -
-			(KIND_ORDER.indexOf(b as any) ?? 99),
+		(a, b) => (KIND_ORDER.indexOf(a as any) ?? 99) - (KIND_ORDER.indexOf(b as any) ?? 99),
 	)
 
 	return (

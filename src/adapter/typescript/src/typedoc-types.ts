@@ -1,3 +1,5 @@
+/* src/adapter/typescript/src/typedoc-types.ts */
+
 // Minimal type definitions for TypeDoc JSON output (schema v2.0).
 // Hand-written from actual output to avoid runtime dependency on typedoc.
 

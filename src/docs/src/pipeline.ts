@@ -1,3 +1,5 @@
+/* src/docs/src/pipeline.ts */
+
 import { join } from 'node:path'
 import type { ApiSection, BaseSymbol, DocOutput, Site } from '@catforge/schema'
 import type { CatforgeConfig, PackageEntry } from './config.js'

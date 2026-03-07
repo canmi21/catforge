@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* src/cli/src/index.ts */
 
 import { readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
@@ -6,7 +7,9 @@ import { fileURLToPath } from 'node:url'
 import { runBuild } from './build.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const pkg: { version: string } = JSON.parse(readFileSync(resolve(__dirname, '../package.json'), 'utf-8'))
+const pkg: { version: string } = JSON.parse(
+	readFileSync(resolve(__dirname, '../package.json'), 'utf-8'),
+)
 
 const args = process.argv.slice(2)
 const command = args[0]

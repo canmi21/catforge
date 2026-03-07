@@ -1,3 +1,5 @@
+/* src/docs/src/markdown.ts */
+
 import { readFile, readdir, stat } from 'node:fs/promises'
 import { basename, extname, join } from 'node:path'
 import { parse as parseYaml } from 'yaml'

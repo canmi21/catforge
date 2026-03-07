@@ -1,3 +1,5 @@
+/* src/ui/fuma/src/lib/route-utils.ts */
+
 import type { ProcessedPage, ProcessedSite } from './site-data.js'
 
 export function findPageByPath(
@@ -44,9 +46,7 @@ export function collectRoutes(site: ProcessedSite): string[] {
 }
 
 // Find the home page (lowest order among root pages with content)
-export function findHomePage(
-	pages: ProcessedPage[],
-): ProcessedPage | undefined {
+export function findHomePage(pages: ProcessedPage[]): ProcessedPage | undefined {
 	const flat = flattenPages(pages)
 	const withContent = flat.filter((p) => p.html)
 	withContent.sort((a, b) => a.order - b.order)

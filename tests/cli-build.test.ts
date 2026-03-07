@@ -1,3 +1,5 @@
+/* tests/cli-build.test.ts */
+
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'

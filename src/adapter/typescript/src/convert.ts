@@ -1,3 +1,5 @@
+/* src/adapter/typescript/src/convert.ts */
+
 // Main conversion: TypeDoc reflection tree → DocOutput<TsSymbol>.
 
 import type {
@@ -214,9 +216,9 @@ function convertEnum(refl: TdReflection, modulePath: string): TsEnum {
 		.map((c) => ({
 			name: c.name,
 			value:
-			c.type?.type === 'literal' && c.type.value !== null && c.type.value !== undefined
-				? String(c.type.value)
-				: undefined,
+				c.type?.type === 'literal' && c.type.value !== null && c.type.value !== undefined
+					? String(c.type.value)
+					: undefined,
 		}))
 
 	return {

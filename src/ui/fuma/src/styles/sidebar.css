@@ -52,7 +52,7 @@
 }
 
 .sidebar-group-label::before {
-	content: "\25B8";
+	content: '\25B8';
 	display: inline-block;
 	margin-right: 4px;
 	font-size: 10px;

@@ -1,3 +1,5 @@
+/* src/ui/fuma/src/lib/site-data.ts */
+
 import type { ApiSection } from '@catforge/schema'
 
 export interface TocEntry {

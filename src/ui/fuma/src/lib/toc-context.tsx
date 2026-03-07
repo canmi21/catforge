@@ -1,3 +1,5 @@
+/* src/ui/fuma/src/lib/toc-context.tsx */
+
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
 import type { TocEntry } from './site-data.js'
 
@@ -13,11 +15,7 @@ const TocContext = createContext<TocContextValue>({
 
 export function TocProvider({ children }: { children: ReactNode }) {
 	const [entries, setEntries] = useState<TocEntry[]>([])
-	return (
-		<TocContext value={{ entries, setEntries }}>
-			{children}
-		</TocContext>
-	)
+	return <TocContext value={{ entries, setEntries }}>{children}</TocContext>
 }
 
 export function useTocEntries() {

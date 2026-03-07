@@ -1,3 +1,5 @@
+/* src/ui/fuma/src/components/toc-panel.tsx */
+
 import { useEffect, useRef, useState } from 'react'
 import type { TocEntry } from '~/lib/site-data.js'
 

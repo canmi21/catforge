@@ -1,3 +1,5 @@
+/* catforge.config.ts */
+
 import type { CatforgeConfig } from './src/docs/src/config.js'
 
 const config: CatforgeConfig = {

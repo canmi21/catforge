@@ -19,7 +19,12 @@
 	--toc-width: 200px;
 	--header-height: 48px;
 	--content-max-width: 800px;
-	font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	font-family:
+		system-ui,
+		-apple-system,
+		'Segoe UI',
+		Roboto,
+		sans-serif;
 	color: var(--color-text);
 	background: var(--color-bg);
 	line-height: 1.6;
@@ -80,26 +85,61 @@ a:hover {
 }
 
 /* Markdown body typography */
-.markdown-body h1 { font-size: 1.75rem; margin-bottom: 0.5em; font-weight: 700; }
-.markdown-body h2 { font-size: 1.4rem; margin-top: 1.5em; margin-bottom: 0.5em; font-weight: 600; }
-.markdown-body h3 { font-size: 1.15rem; margin-top: 1.25em; margin-bottom: 0.4em; font-weight: 600; }
-.markdown-body h4 { font-size: 1rem; margin-top: 1em; margin-bottom: 0.4em; font-weight: 600; }
-.markdown-body p { margin-bottom: 0.75em; }
-.markdown-body ul, .markdown-body ol { margin-bottom: 0.75em; padding-left: 1.5em; }
-.markdown-body li { margin-bottom: 0.25em; }
+.markdown-body h1 {
+	font-size: 1.75rem;
+	margin-bottom: 0.5em;
+	font-weight: 700;
+}
+.markdown-body h2 {
+	font-size: 1.4rem;
+	margin-top: 1.5em;
+	margin-bottom: 0.5em;
+	font-weight: 600;
+}
+.markdown-body h3 {
+	font-size: 1.15rem;
+	margin-top: 1.25em;
+	margin-bottom: 0.4em;
+	font-weight: 600;
+}
+.markdown-body h4 {
+	font-size: 1rem;
+	margin-top: 1em;
+	margin-bottom: 0.4em;
+	font-weight: 600;
+}
+.markdown-body p {
+	margin-bottom: 0.75em;
+}
+.markdown-body ul,
+.markdown-body ol {
+	margin-bottom: 0.75em;
+	padding-left: 1.5em;
+}
+.markdown-body li {
+	margin-bottom: 0.25em;
+}
 .markdown-body blockquote {
 	border-left: 3px solid var(--color-border);
 	padding-left: 1em;
 	margin-bottom: 0.75em;
 	color: var(--color-text-muted);
 }
-.markdown-body table { border-collapse: collapse; margin-bottom: 1em; width: 100%; }
-.markdown-body th, .markdown-body td {
+.markdown-body table {
+	border-collapse: collapse;
+	margin-bottom: 1em;
+	width: 100%;
+}
+.markdown-body th,
+.markdown-body td {
 	border: 1px solid var(--color-border);
 	padding: 6px 12px;
 	text-align: left;
 }
-.markdown-body th { font-weight: 600; background: var(--color-sidebar-bg); }
+.markdown-body th {
+	font-weight: 600;
+	background: var(--color-sidebar-bg);
+}
 
 .markdown-body code:not(pre code) {
 	background: var(--color-code-bg);

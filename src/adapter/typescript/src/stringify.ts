@@ -1,3 +1,5 @@
+/* src/adapter/typescript/src/stringify.ts */
+
 // Type node → string conversion and signature reconstruction.
 
 import type { TdComment, TdReflection, TdType, TdTypeParameter } from './typedoc-types.js'
@@ -154,7 +156,12 @@ export function buildSignature(refl: TdReflection): string {
 		const members = (refl.children ?? [])
 			.filter((c) => c.kind === ReflectionKind.EnumMember)
 			.map((c) => {
-				if (c.type && c.type.type === 'literal' && c.type.value !== null && c.type.value !== undefined) {
+				if (
+					c.type &&
+					c.type.type === 'literal' &&
+					c.type.value !== null &&
+					c.type.value !== undefined
+				) {
 					return `${c.name} = ${JSON.stringify(c.type.value)}`
 				}
 				return c.name

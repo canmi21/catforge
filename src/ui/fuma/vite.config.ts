@@ -1,3 +1,5 @@
+/* src/ui/fuma/vite.config.ts */
+
 import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'

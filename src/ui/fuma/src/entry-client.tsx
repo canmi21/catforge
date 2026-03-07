@@ -1,3 +1,5 @@
+/* src/ui/fuma/src/entry-client.tsx */
+
 import { StrictMode } from 'react'
 import { hydrateRoot } from 'react-dom/client'
 import { RouterProvider } from '@tanstack/react-router'

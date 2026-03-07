@@ -4,10 +4,21 @@
   "private": true,
   "workspaces": ["src/schema", "src/cli", "src/docs", "src/adapter/*", "src/ui/*"],
   "scripts": {
+    "fmt:ts": "oxfmt --write src/",
+    "fmt:ts:check": "oxfmt --check src/",
+    "fmt:md": "dprint fmt",
+    "fmt:md:check": "dprint check",
+    "lint:ox": "oxlint src/",
+    "lint:ox:fix": "oxlint --fix src/",
+    "lint:eslint": "eslint src/",
+    "lint:eslint:fix": "eslint --fix src/",
     "test": "vitest run"
   },
   "devDependencies": {
+    "eslint": "^10.0.3",
+    "eslint-plugin-oxlint": "^1.51.0",
     "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1",
     "vitest": "^3.0.0"
   }
 }

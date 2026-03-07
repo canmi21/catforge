@@ -1,3 +1,5 @@
+/* src/ui/fuma/src/components/sidebar-item.tsx */
+
 import { Link, useRouterState } from '@tanstack/react-router'
 import type { ProcessedPage } from '~/lib/site-data.js'
 

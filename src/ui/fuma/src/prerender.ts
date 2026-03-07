@@ -1,3 +1,5 @@
+/* src/ui/fuma/src/prerender.ts */
+
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { render } from './entry-server.js'
@@ -20,9 +22,7 @@ for (const route of routes) {
 	const page = template.replace('<div id="root"></div>', `<div id="root">${html}</div>`)
 
 	const filePath =
-		route === '/'
-			? resolve(outDir, 'index.html')
-			: resolve(outDir, route.slice(1), 'index.html')
+		route === '/' ? resolve(outDir, 'index.html') : resolve(outDir, route.slice(1), 'index.html')
 
 	mkdirSync(dirname(filePath), { recursive: true })
 	writeFileSync(filePath, page, 'utf-8')

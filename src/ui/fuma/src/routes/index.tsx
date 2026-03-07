@@ -1,3 +1,5 @@
+/* src/ui/fuma/src/routes/index.tsx */
+
 import { createFileRoute } from '@tanstack/react-router'
 import siteData from '~/lib/site-data.js'
 import { findHomePage } from '~/lib/route-utils.js'

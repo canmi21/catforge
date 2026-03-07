@@ -1,3 +1,5 @@
+/* src/ui/fuma/src/components/sidebar.tsx */
+
 import { Link } from '@tanstack/react-router'
 import siteData from '~/lib/site-data.js'
 import { SidebarItem } from './sidebar-item.js'

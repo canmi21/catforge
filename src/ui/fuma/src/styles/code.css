@@ -22,5 +22,5 @@ pre.shiki .shiki-dark {
 }
 
 pre code {
-	font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+	font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
 }

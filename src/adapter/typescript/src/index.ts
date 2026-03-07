@@ -1,3 +1,5 @@
+/* src/adapter/typescript/src/index.ts */
+
 // Public API for the TypeScript adapter.
 
 import type { DocOutput, TsSymbol } from '@catforge/schema'

@@ -1,3 +1,5 @@
+/* src/ui/fuma/src/routes/docs.$.tsx */
+
 import { createFileRoute } from '@tanstack/react-router'
 import siteData from '~/lib/site-data.js'
 import { MarkdownContent } from '~/components/markdown-content.js'

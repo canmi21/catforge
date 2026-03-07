@@ -1,3 +1,5 @@
+/* src/cli/src/build.ts */
+
 import { execFileSync } from 'node:child_process'
 import { rmSync } from 'node:fs'
 import { mkdir, writeFile } from 'node:fs/promises'

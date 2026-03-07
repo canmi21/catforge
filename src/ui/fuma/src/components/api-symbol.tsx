@@ -1,3 +1,5 @@
+/* src/ui/fuma/src/components/api-symbol.tsx */
+
 import type { BaseSymbol } from '@catforge/schema'
 import '~/styles/api.css'
 
@@ -10,16 +12,12 @@ export function ApiSymbol({ symbol }: ApiSymbolProps) {
 	const params = (symbol as any).params as
 		| { name: string; type: string; optional: boolean; default?: string }[]
 		| undefined
-	const members = (symbol as any).members as
-		| { name: string; value?: string }[]
-		| undefined
+	const members = (symbol as any).members as { name: string; value?: string }[] | undefined
 
 	return (
 		<div className="api-symbol-card" id={symbol.name}>
 			<div className="api-symbol-header">
-				<span className={`api-kind-badge kind-${symbol.kind}`}>
-					{symbol.kind}
-				</span>
+				<span className={`api-kind-badge kind-${symbol.kind}`}>{symbol.kind}</span>
 				<a href={`#${symbol.name}`} className="api-symbol-name">
 					{symbol.name}
 				</a>

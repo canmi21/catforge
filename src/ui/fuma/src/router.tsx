@@ -1,3 +1,5 @@
+/* src/ui/fuma/src/router.tsx */
+
 import { createRouter as createTanStackRouter } from '@tanstack/react-router'
 import { routeTree } from './route-tree.gen.js'
 

@@ -1,3 +1,5 @@
+/* tests/docs-pipeline.test.ts */
+
 import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import type { Site } from '../src/schema/src/index.js'

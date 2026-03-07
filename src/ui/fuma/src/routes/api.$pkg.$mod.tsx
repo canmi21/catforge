@@ -1,3 +1,5 @@
+/* src/ui/fuma/src/routes/api.$pkg.$mod.tsx */
+
 import { createFileRoute } from '@tanstack/react-router'
 import siteData from '~/lib/site-data.js'
 import { ApiModule } from '~/components/api-module.js'
